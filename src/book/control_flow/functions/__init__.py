@@ -51,10 +51,38 @@ print('Sum 5 + 7 is : ', sum_args(5, 7))
 """---------- Keyword-only parameter
 should come after *args (if any) and before **kwargs (if any)
 """
-#Examples
+#Examples v3
+'''
 def f_kwonly(a, *, b, c=56): # b anc c are keyword-only
     return a, b, c
 
 f_kwonly(12, b=34) #returns (12, 34, 56) - c's optional, having a default
 f_kwonly(12) # raises a TypeError exception
-    
+'''
+
+#Default argument value
+def ask_ok(prompt, retries=4, complaint='Yes or no, please!'):
+    while True:
+        ok = raw_input(prompt)
+        if ok in ('y', 'ye', 'yes'):
+            return True
+        if ok in ('n', 'no', 'nop', 'nope'):
+            return False
+        retries = retries -1
+        if retries < 0:
+            raise IOError('refusenik user')
+        print complaint
+
+# 3 ways to call ask_ok funtion
+ask_ok('Do you really want to quit?')
+ask_ok('Ok to overwrite the file?', 2)
+ask_ok('OK to overwrite the file?', 2, 'Come on, only yes or no!')
+
+# NOTE default value evaluated at the point of function definition in the defining scope =>
+i = 5
+def f_with_default_argument(arg=i):
+    print arg
+i=6
+f_with_default_argument() # result: 5 (defining scope)
+
+

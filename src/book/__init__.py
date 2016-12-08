@@ -1,6 +1,22 @@
 '''This shows basic things during program with python
 '''
 
+"""CODING STYLE (VERY IMPORTANT)
+1. use 4-space indentation, and no tabs.
+2. Wrap lines (don't exceed 79 characters)
+3. Use blank line to separate functions and classes, and larger blocks of code
+    inside functions
+4. When possible, put comments on a line of their own.
+5. Use docstrings.
+6. Use spaces around operators and after commas, but not directly 
+    inside bracketing constructs: a = f(1, 2) + g(3, 4).
+7. Name your classes and functions consistently; the convention is to use CamelCase
+    for classes and lower_case_with_underscores for functions and methods.
+    Always use <b>self</b> as the name for the <b>first method argument</b>.
+8. Don't use fancy encodings if your code is meant to be used 
+    in international environments. Plain ASCII works best in any way.
+"""
+
 """ ---------- Keywords and meaning
 raise - to raise an exception
 with - to alternative to the try/finally
@@ -62,11 +78,12 @@ def frange(start, stop, stride=1.0):
         start += step
         
 #Recursion
+"""
 def rec(t):
     yield t[0]
     for i in (1,2):
         if t[i] is not None: yield from rec(t[i])
-        
+"""        
 
 #Stack
 def norec(t):
