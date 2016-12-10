@@ -1,6 +1,29 @@
 '''This shows basic things during program with python
 '''
 
+""" Compiled Python files
+Some tips:
++ When the Python interpreter is invoked with the -0 flag, optimized code is generated and
+    stored in .pyo files. The optimizer currently doesn't help much; it only removes assert
+    statements. When -0 is used, all bytecode is optimized; .pyc files are ignored and .py
+    files are compiled to optimized bytecode.
++ Passing two -0 flags to the Python interpreter (-00) cause the bytecode compiler to perform
+    optimizations that could in some rare cases result in malfunctioning programs. Currently
+    only __doc__ strings are removed from the bytecode, resulting in more compact .pyo files.
++ A program doesn't run any faster when it is read from a .pyc or .pyo file than when it is read
+    from a .py file; the only thing that's faster about .pyc or .pyo files is the speed
+    with which they are loaded.
++ When a script is run by giving its name on the command line, the bytecode for the script
+    is never written to a .pyc or .pyo file. Thus, the startup time of a script may be reduced
+    by moving most of its code to a module and having a small bootstrap script that imports
+    that module. It is also possible to name a .pyc or .pyo file directly on the command line.
++ It is possible to have called spam.pyc (or spam.pyo when -0 is used) without a file spam.py
+    for the same module. This can be used to distribute a library of Python code in a form
+    that is moderately hard to reverse engineer.
++ The module compileall can create .pyc files (or .pyo files when -0 is used) for all modules
+    in a directory.
+"""
+
 """CODING STYLE (VERY IMPORTANT)
 1. use 4-space indentation, and no tabs.
 2. Wrap lines (don't exceed 79 characters)
@@ -36,6 +59,7 @@ pass - Python COMPOUNT STATEMENT (but not for def or class) cannot be empty (pas
 + Functions:
     - They are objects (values)
     - They can also be keys into a dictionary
++ Assignment cannot occur inside expressions
 """
 
 """----------Unorganized
@@ -93,3 +117,14 @@ def norec(t):
         yield t[0]
         for i in (2,1):
             if t[i] is not None: stack.append(t[i])
+            
+
+"""diference between import and from ... import
+e.g. if import package.sub_package.sub_sub_package.module
+whenever we use, we have to define the whole one (package.sub_package.sub_sub_package.module) 
+    then call the funtions (in that module)
+with from ... import module, we just need to define module.function
+More about import:
++ from . import modules/functions : means from current package
++ from .. import modules/functions : means from parent
+"""
