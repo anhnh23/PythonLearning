@@ -232,3 +232,94 @@ print 'Main program waited until background was done.'
 
 ## Queue.Queue objects for inter-thread communication and coordination are easier to design
 ## more readable, and more reliable
+
+# Logging - by default: informational and debugging message are suppressed and the output
+# is sent to standard error
+import logging # offers a full featured and flexible logging system (log to file or send to sys.stderr)
+logging.debug('debug info')
+logging.info('Infomational message')
+logging.warning('Warning:config file %s not found', 'server.conf')
+logging.error('Error occurred')
+logging.critical('Critical error -- shutting down')
+
+# Weak References
+import weakref, gc # for tracking objects without creating a reference. When 
+    # the object is no longer needed, it is automatically removed from a weakref
+    # table and a callback is triggered for weakref objects.
+    # Tipical applications include caching objects that are expensive to create
+class A:
+    def __init__(self, value):
+        self.value = value
+    def __repr__(self):
+        return str(self.value)
+
+a = A(10) # create a reference
+d = weakref.WeakValueDictionary() #
+d['primary'] = a # does not create a reference <== THIS ONE IS A KEY
+print d['primary'] # result: 10
+del a #remove the one reference
+gc.collect() #run garbage collection right away
+print d['primary'] # error occurs
+
+# Tools for working with lists
+from array import array # provides an array() object storing only homogeneous data and more compactly
+## storing as two byte unsigned binary numbers (typecode "H")
+a = array('H', [4000, 10, 700, 22222])
+sum(a) # = 26932
+a[1:3] # = array('H', [10, 700])
+
+from collections import deque # with faster appends and pops from the left side
+    # but slower lookups in the middle.
+    # best practice: queues and breadth first tree searches
+d = deque(["task1", "task2", "task3"])
+d.append("task4")
+print "Handling", d.popleft()
+
+"""Breadth first tree searches
+unsearched = deque([starting_node])
+def breadth_first_search(unsearched):
+    note = unsearched.popleft()
+    for m in gen_moves(node):
+        if is_goal(m):
+            return m
+        unsearched.append(m)
+"""
+
+import bisect # manipulating sorted lists
+scores = [(100, 'perl'), (200, 'tcl'), (400, 'lua'), (500, 'python')]
+bisect.insort(scores, (300, 'ruby')) # add 300, 'ruby' to the sorted list
+
+from heapq import heapify, heappop, heappush # implementing heaps based on regular lists
+    # lowest is always 0
+    # best practice: repeatedly access the smallest element
+    #    but do not want to run a full list sort
+data = [1, 3, 5, 7, 9, 2, 4, 6, 8, 0]
+heapify(data) #rearrange the list into heap order
+heappush(data, -5) # add a new entry
+[heappop(data) for i in range(3)] # fecth the tree SMALLEST entries
+
+# Decimal Floating Point Arithmetic
+from decimal import * # offers a Decimal datatype for decimal floating point arithmetic
+"""helpful for:
++ financial application and other uses which require exact decimal representations
++ control over precision
++ control over rounding to meet legal or regulatory requirements
++ tracking of significant decimal places
++ applications where the user expects the results to match calculations done by hand
+"""
+x = Decimal('0.70') * Decimal('1.05') # Decimal('0.7350')
+x.quantize(Decimal('0.01')) # round to nearest cent Decimal('0.74')
+round(.70 * 1.05, 2) # 0.73
+
+"""
+Decimal result keeps a trailing zero, automatically inferring four place significance
+from multiplicands with two place significance. 
+"""
+Decimal('1.00') % Decimal('.10') # Decimal('0.00')
+1.00 % 0.10 # 0.09999999999999995
+sum([Decimal('0.1')]*10) == Decimal('1.0') # true
+sum([0.1]*10) == 1.0 # false
+
+## provides arithmetic with as much precision as needed
+getcontext().prec = 36
+Decimal(1)/Decimal(7) # Decimal('0.142857142857142857142857142857')
