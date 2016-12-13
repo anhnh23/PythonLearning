@@ -8,7 +8,7 @@ import urllib2
 from bs4 import BeautifulSoup
 from technique.web_crawling.util import common
 import re
-
+'''
 def scrape(html):
     soup = BeautifulSoup(html)
     tr = soup.find(attrs={'id':'places_area__row'}) # locate the area row
@@ -16,7 +16,7 @@ def scrape(html):
     td = tr.find(attrs={'class':'w2p_fw'}) # locate the area tag
     area = td.text # extract the area contents from this tag
     return area
-
+'''
 def link_crawler(seed_url, link_regex=None, delay=5, max_depth=-1, max_urls=-1, headers=None, 
                  user_agent='wswp', proxy=None, num_retries=1, scrape_callback=None):
     """Crawl from the given seed URL following links matched by link_regex
@@ -42,7 +42,8 @@ def link_crawler(seed_url, link_regex=None, delay=5, max_depth=-1, max_urls=-1, 
             html = common.download(url, headers, proxy=proxy, num_retries=num_retries)
             links = []
             if scrape_callback:
-                links.extend(scrape(url, html) or [])
+                #links.extend(scrape(url, html) or [])
+                links.extend(scrape_callback(url, html) or [])
             
             if depth != max_depth:
                 # can still crawl further

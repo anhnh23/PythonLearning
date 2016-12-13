@@ -119,7 +119,7 @@ def norec(t):
             if t[i] is not None: stack.append(t[i])
             
 
-"""diference between import and from ... import
+"""diference between import and from import
 e.g. if import package.sub_package.sub_sub_package.module
 whenever we use, we have to define the whole one (package.sub_package.sub_sub_package.module) 
     then call the funtions (in that module)
@@ -127,4 +127,13 @@ with from ... import module, we just need to define module.function
 More about import:
 + from . import modules/functions : means from current package
 + from .. import modules/functions : means from parent
+"""
+
+"""Where to go beyond the basic
++ Python documentation: chills and trills
++ Python "recipes"
++ Python "idiomatic" coding
++ Work for free if necessary
+    - Non profit
+    - Open-source projects
 """

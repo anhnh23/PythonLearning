@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/book/string_tech.py=iso-8859-15
 encoding//src/technique/web_crawling/download_site/download_util.py=utf-8
+encoding//src/technique/web_crawling/scraping_data/performance.py=utf-8
+encoding//src/theory/string_tech.py=iso-8859-15
