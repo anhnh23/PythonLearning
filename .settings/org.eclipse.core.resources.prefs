@@ -1,4 +1,10 @@
 eclipse.preferences.version=1
 encoding//src/technique/web_crawling/download_site/download_util.py=utf-8
+encoding//src/technique/web_crawling/process_test.py=utf-8
 encoding//src/technique/web_crawling/scraping_data/performance.py=utf-8
+encoding//src/technique/web_crawling/threading/alexa_cb.py=utf-8
+encoding//src/technique/web_crawling/threading/alexa_fn.py=utf-8
+encoding//src/technique/web_crawling/threading/process_crawler.py=utf-8
+encoding//src/technique/web_crawling/threading/sequential_test.py=utf-8
+encoding//src/technique/web_crawling/threading/threaded_test.py=utf-8
 encoding//src/theory/string_tech.py=iso-8859-15
