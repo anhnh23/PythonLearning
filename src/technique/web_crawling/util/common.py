@@ -76,7 +76,7 @@ class Downloader:
         return result['html']
     
     def download(self, url, headers, proxy, num_retries, data=None):
-        print 'Downloading:', url
+        print('Downloading:', url)
         request = urllib2.Request(url, data, headers or {})
         opener = self.opener or urllib2.build_opener()
         if proxy:
@@ -87,7 +87,7 @@ class Downloader:
             html = response.read()
             code = response.code
         except Exception as e:
-            print 'Download error:', str(e)
+            print('Download error:', str(e))
             html = ''
             if hasattr(e, 'code'):
                 code = e.code
@@ -152,10 +152,10 @@ def link_crawler(seed_url, link_regex=None, delay=5, max_depth=-1, max_urls=-1,
             if num_urls == max_urls:
                 break
         else:
-            print 'Blocked by robots.txt:', url
+            print('Blocked by robots.txt:', url)
             
 def download(url, headers, proxy, num_retries=2, data=None):
-    print 'Downloading:', url
+    print('Downloading:', url)
     request = urllib2.Request(url, data, headers)
     opener = urllib2.build_opener()
     if proxy:
@@ -166,7 +166,7 @@ def download(url, headers, proxy, num_retries=2, data=None):
         html = response.read()
         code = response.code
     except urllib2.URLError as e:
-        print 'Download error:', e.reason
+        print('Download error:', e.reason)
         html = None
         if hasattr(e, 'code'):
             code = e.code
