@@ -9,7 +9,7 @@ import lxml.html
 url = 'http://www.kenya-business-directory.com/listo/'
 def scrape(html):
     tree = lxml.html.fromstring(html)
-    lis = tree.cssselect('div#content > li')
+    lis = tree.cssselect('#content li')
     for li in lis:
         print(li.text_content())
 

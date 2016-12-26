@@ -12,17 +12,16 @@ Collecting data from links:
 """
 import urllib.request as request
 import lxml.html
+from lxml.cssselect import CSSSelector 
 
-#url = 'http://www.flashscore.com/soccer/belgium/proximus-league/results/'
-url = 'http://www.kenya-business-directory.com/listo/'
+url = 'http://www.flashscore.com/soccer/belgium/proximus-league/results/'
 table_id = 'fs-results'
 table_class = 'fs-table tournament-page'
 
 def scrape(html):
     tree = lxml.html.fromstring(html)
-    lis = tree.cssselect('div#content > li')
-    for li in lis:
-        print(li.text_content())
+    div = CSSSelector('div#fs-results')
+    print(div.path)
 
 if __name__ == '__main__':
     html = request.urlopen(url).read()
