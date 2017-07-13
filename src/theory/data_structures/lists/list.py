@@ -18,7 +18,7 @@ from collections import deque
 queue = deque(a) # deque is built for fast appending and popping
 queue.append(100)
 queue.popleft() # remember popleft for first-out, if we use pop() it becomes last-out
-print queue
+print (queue)
 
 # 3 Useful tools: filter(), map(), and reduces()
 """
@@ -32,16 +32,11 @@ filter(f, range(2, 20)) # Result: [3, 5, 6, 9, 10, 12, 15, 18]
 map(function, sequence) return a list of return values
 """
 def cube(x): return x*x*x
-print map(cube, range(1, 5)) # Result: [1, 8, 27, 64]
+print (map(cube, range(1, 5))) # Result: [1, 8, 27, 64]
 
 seq = range(5)
 def add(x, y): return x+y
-print map(add, seq, seq) # loop 2 sequences at the same time and do add, Resutl: 0, 2, 4, 6, 8
-"""
-reduce(function, sequence) retunrs a single value constructed by calling the binary function
-    on the first two items of the sequence, then on the result and the next item, and so on.
-"""
-print reduce(add, range(1, 5))
+print (map(add, seq, seq)) # loop 2 sequences at the same time and do add, Resutl: 0, 2, 4, 6, 8
 
 # List comprehension
 squares = [x**2 for x in range(10)] # The same as: map(lambda x: x**2, range(10))
