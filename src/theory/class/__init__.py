@@ -92,7 +92,7 @@ rev = Reverse('spam')
 iter(rev) # ==> print an object
 ## to get a correct result
 for char in rev:
-    print char
+    print(char)
     
 # yield keyword: Generators are a simple and power tool for creating iterators.
 def reverse(data):
@@ -100,7 +100,7 @@ def reverse(data):
         yield data[index]
         
 for char in reverse('golf'):
-    print char
+    print(char)
     
 # generator expressions use () instead of [] (list comprehension)
 sum(i*i for i in range(10)) # sum of squares

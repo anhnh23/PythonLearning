@@ -28,8 +28,3 @@ tel2 = dict(sape=4139, guido=2222, jack=4000)
 
 # dict comprehension
 d = {n:n//2 for n in range(10)} #result:  {0:0, 1:0, 2:1, 3:1, ...
-
-# iteritems() : to get key and value at the same time
-knights = {'gallahad': 'the pure', 'robin': 'the brave'}
-for k, v in knights.iteritems():
-    print k, v

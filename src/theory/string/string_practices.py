@@ -21,3 +21,8 @@ if x < 0:
     print('Negative changed to zero')
 else:
     print('More')
+    
+# Matching
+import re
+re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest')
+re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')

@@ -1,4 +1,4 @@
-"""There are 2 kinds of error:
+"""There are (at least) 2 kinds of error:
 + Syntax errors (parsing error, ...)
 + Exceptions - errors detected during execution
 """
@@ -6,7 +6,7 @@
 # using with keyword to clean-up in file manipulation
 with open("file") as f: # no need to clean-up at finally
     for line in f:
-        print line
+        print(line)
 
 # catch multi-exceptions
 try:
@@ -27,11 +27,11 @@ finally: # clean-up
 try:
     raise Exception('spam', 'eggs') # to raise an exception
 except Exception as inst:
-    print type(inst) # the exception instance
-    print inst.args # arguments stored in .args
-    print inst # __str__ allows args to be printed directly
+    print(type(inst)) # the exception instance
+    print(inst.args) # arguments stored in .args
+    print(inst) # __str__ allows args to be printed directly
     x, y = inst.args
-    print x, y
+    print(x, y)
     
 # User defined exception
 class MyError(Exception):
@@ -45,7 +45,7 @@ class MyError(Exception):
 try:
     raise MyError(2*2)
 except MyError as e:
-    print 'My exception occurred, value:', e.value
+    print('My exception occurred, value:', e.value)
     
 ## 
 raise MyError('oops!')

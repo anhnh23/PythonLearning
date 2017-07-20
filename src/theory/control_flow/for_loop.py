@@ -3,6 +3,15 @@ Created on Dec 8, 2016
 
 @author: ToOro
 '''
+"""
+Behind the scene: for statement calls iter() on the container object.
+"""
+#--------- How iter() works ---------
+s = 'abc'
+it = iter(s)
+print(next(it))
+print(next(it))
+print(next(it))
 
 # enumerate() : can be retrieved index and corresponding value
 for i, v in enumerate(['tic', 'tac', 'toe']):
@@ -39,5 +48,17 @@ for value in raw_data:
 words=['cat','window', 'defenestrate']
 for w in words:
     print(w, len(w))
+    
+for element in (1,2,3):
+    print(element)
+    
+for key in {'one':1, 'two':2}:
+    print(key)
+    
+for char in "123":
+    print(char)
+    
+for line in open("myfile.txt"):
+    print(line, end='')
 
     

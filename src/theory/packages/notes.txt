@@ -1,0 +1,2 @@
+if __all__ is not defined in __init__.py; import * does not import all modules.
+__path__ : list all names of the directory holding the package's __init__.py
